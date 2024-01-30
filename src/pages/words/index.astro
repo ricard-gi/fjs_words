@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Tornar from '../../components/Tornar.astro';
+
+if (Astro.request.method === 'POST') {
+  const data = await Astro.request.formData()
+  const inici = data.get('inici')
+  console.log(inici)
+  return Astro.redirect('/words/'+inici)
+}
+
+---
+
+
+
+
+<Layout titol="Paraules que comencen per...">
+    
+    <Tornar url="/" />
+
+
+    <form method='post'>
+        <input type='text' class="border" name='inici' />
+        <button>enviar</button>
+      </form>
+
+    <div class="grid grid-cols-5 gap-3">
+        <a href="/words/aca" >ACA...</a>
+        <a href="/words/aba" >ABA...</a>
+
+
+    </div>
+</Layout>
+
+

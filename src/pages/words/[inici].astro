@@ -1,0 +1,21 @@
+---
+import Tornar from "../../components/Tornar.astro";
+import Layout from "../../layouts/Layout.astro";
+import words from "../../data/castellano.js"
+const { inici } = Astro.params;
+
+
+---
+
+<Layout titol={inici}>
+    <Tornar url="/words" />
+    <h1>Paraules en castellà que comencen amb {inici}</h1>
+    <br />
+    <br />
+
+    <ul>
+        {
+            words.filter(e => e.startsWith(inici)).map(e => <li>{e}</li>)
+        }
+    </ul>
+</Layout>
